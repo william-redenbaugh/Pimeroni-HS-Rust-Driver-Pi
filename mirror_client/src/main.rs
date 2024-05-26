@@ -47,30 +47,30 @@ fn handle_incoming_message(data_in: &[u8], matrix: &mut pimeroni_unicornhd::Matr
     if(x_index == 1){
         *pixel_index = 0;
         for data_index in 0..len{
-            *pixel_index = *pixel_index + 1;
             let arr_index = data_index as usize * 3 + 3;
             matrix.set_pixel(*pixel_index / 16, 
                 *pixel_index %16,
                 data_in[arr_index], 
                 data_in[arr_index + 1], 
                 data_in[arr_index + 2]);
+            *pixel_index = *pixel_index + 1;
+            
         }
     }
 
     if x_index == 2{
         for data_index in 0..len{
-            *pixel_index = *pixel_index + 1;
             let arr_index = data_index as usize * 3 + 3;
             matrix.set_pixel(*pixel_index / 16, 
                 *pixel_index %16,
                 data_in[arr_index], 
                 data_in[arr_index + 1], 
                 data_in[arr_index + 2]);
+            *pixel_index = *pixel_index + 1;
         }
         matrix.update();
     }
 
-    matrix.update();
 }
 
 
